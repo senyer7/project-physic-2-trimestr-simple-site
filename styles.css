@@ -1,0 +1,428 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Изменено с center на flex-start */
+  padding: 10px; /* Уменьшено с 20px */
+}
+
+.container {
+  background: white;
+  border-radius: 12px; /* Немного уменьшено */
+  max-width: 750px; /* Уменьшено с 800px */
+  width: 100%;
+  padding: 25px; /* Уменьшено с 40px */
+  margin: 10px 0; /* Добавлено для центрирования при flex-start */
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px; /* Уменьшено */
+  border-bottom: 2px solid #444; /* Уменьшено */
+  padding-bottom: 15px; /* Уменьшено */
+}
+
+.header h1 {
+  color: #333;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.header p {
+  color: #666;
+  font-size: 13px; /* Уменьшено */
+  font-weight: 300;
+  line-height: 1.4; /* Добавлено */
+}
+
+.student-info {
+  background: #f8f9fa;
+  padding: 12px; /* Уменьшено */
+  border-radius: 8px;
+  margin-bottom: 15px; /* Уменьшено */
+  text-align: center;
+  color: #555;
+  font-size: 12px; /* Уменьшено */
+  font-weight: 400;
+  line-height: 1.4; /* Добавлено */
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 8px; /* Уменьшено */
+  margin-bottom: 15px; /* Уменьшено */
+  border-bottom: 2px solid #eee;
+  flex-wrap: wrap; /* Для адаптивности на мобильных */
+}
+
+.tab-button {
+  padding: 10px 16px; /* Уменьшено */
+  border: none;
+  background: none;
+  color: #999;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 11px; /* Уменьшено */
+  text-transform: uppercase;
+  border-bottom: 2px solid transparent; /* Уменьшено */
+  margin-bottom: -2px;
+  transition: all 0.3s;
+  flex: 1; /* Чтобы кнопки равномерно распределялись */
+  min-width: 120px; /* Минимальная ширина для читаемости */
+}
+
+.tab-button.active {
+  color: #444;
+  border-bottom-color: #444;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.task-section {
+  margin-bottom: 20px; /* Уменьшено */
+}
+
+.task-title {
+  color: #444;
+  font-size: 14px; /* Уменьшено */
+  font-weight: 600;
+  margin-bottom: 12px; /* Уменьшено */
+  text-transform: uppercase;
+  letter-spacing: 0.8px; /* Уменьшено */
+}
+
+.task-description {
+  background: #f0f4ff;
+  padding: 12px; /* Уменьшено */
+  border-left: 3px solid #667eea; /* Уменьшено */
+  border-radius: 5px;
+  margin-bottom: 15px; /* Уменьшено */
+  color: #333;
+  font-size: 12px; /* Уменьшено */
+  line-height: 1.5;
+}
+
+.input-group {
+  margin-bottom: 12px; /* Уменьшено */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px; /* Уменьшено */
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field label {
+  color: #333;
+  font-size: 11px; /* Уменьшено */
+  font-weight: 600;
+  margin-bottom: 4px; /* Уменьшено */
+  text-transform: uppercase;
+  letter-spacing: 0.4px; /* Уменьшено */
+}
+
+.input-field input {
+  padding: 9px 10px; /* Уменьшено */
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px; /* Уменьшено */
+  transition: border-color 0.3s;
+  height: 40px; /* Фиксированная высота для единообразия */
+}
+
+.input-field input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1); /* Уменьшено */
+}
+
+.button-group {
+  display: flex;
+  gap: 8px; /* Уменьшено */
+  margin-top: 15px; /* Уменьшено */
+}
+
+button {
+  flex: 1;
+  padding: 11px; /* Уменьшено */
+  border: none;
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px; /* Уменьшено */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 0.4px; /* Уменьшено */
+  height: 40px; /* Фиксированная высота */
+}
+
+.btn-calculate {
+  background: #333;
+  color: white;
+}
+
+.btn-calculate:hover {
+  background-color: #555;
+  box-shadow: 0 3px 8px rgba(102, 126, 234, 0.3); /* Уменьшено */
+}
+
+.btn-clear {
+  background: #e9ecef;
+  color: #333;
+}
+
+.btn-clear:hover {
+  background: #dee2e6;
+}
+
+.results {
+  display: none;
+  background: #e8f5e9;
+  padding: 15px; /* Уменьшено */
+  border-radius: 8px;
+  margin-top: 20px; /* Уменьшено */
+  border-left: 3px solid #4caf50; /* Уменьшено */
+}
+
+.results.show {
+  display: block;
+}
+
+.result-item {
+  margin-bottom: 10px; /* Уменьшено */
+  color: #333;
+  font-size: 12px; /* Уменьшено */
+}
+
+.result-label {
+  font-weight: 600;
+  color: #2e7d32;
+  text-transform: uppercase;
+  letter-spacing: 0.4px; /* Уменьшено */
+  display: block;
+  margin-bottom: 2px; /* Добавлено */
+}
+
+.result-value {
+  font-size: 18px; /* Уменьшено */
+  color: #1b5e20;
+  font-weight: 700;
+  line-height: 1.2; /* Добавлено */
+}
+
+.formula-section {
+  background: #fff3e0;
+  padding: 12px; /* Уменьшено */
+  border-radius: 5px;
+  margin-top: 12px; /* Уменьшено */
+  border-left: 3px solid #ff9800; /* Уменьшено */
+}
+
+.formula-title {
+  color: #e65100;
+  font-size: 11px; /* Уменьшено */
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 6px; /* Уменьшено */
+}
+
+.formula {
+  color: #333;
+  font-size: 12px; /* Уменьшено */
+  font-family: "Courier New", monospace;
+  line-height: 1.4; /* Уменьшено */
+}
+
+.sources {
+  background: #f5f5f5;
+  padding: 12px; /* Уменьшено */
+  border-radius: 5px;
+  margin-top: 15px; /* Уменьшено */
+}
+
+.sources-title {
+  color: #333;
+  font-size: 11px; /* Уменьшено */
+  font-weight: 600;
+  margin-bottom: 8px; /* Уменьшено */
+  text-transform: uppercase;
+}
+
+.source-item {
+  color: #555;
+  font-size: 11px; /* Уменьшено */
+  margin-bottom: 6px; /* Уменьшено */
+  padding-left: 12px; /* Уменьшено */
+  position: relative;
+  line-height: 1.4; /* Добавлено */
+}
+
+.source-item:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+}
+
+.source-item a {
+  color: #667eea;
+  text-decoration: none;
+  word-break: break-all; /* Для длинных ссылок на мобильных */
+}
+
+.source-item a:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 25px; /* Уменьшено */
+  padding-top: 15px; /* Уменьшено */
+  border-top: 1px solid #eee;
+}
+
+.footer a {
+  color: #667eea;
+  text-decoration: none;
+  font-size: 11px; /* Уменьшено */
+  font-weight: 500;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Улучшенная адаптивность */
+@media (max-width: 768px) {
+  body {
+    padding: 8px;
+    align-items: flex-start; /* Для мобильных - начало контейнера */
+  }
+
+  .container {
+    padding: 20px;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 10px;
+  }
+
+  .tab-buttons {
+    gap: 5px;
+  }
+
+  .tab-button {
+    min-width: calc(50% - 5px); /* Две кнопки в строке на мобильных */
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .header p {
+    font-size: 12px;
+  }
+
+  .input-group {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .tab-button {
+    min-width: 100%; /* На маленьких экранах - одна кнопка в строке */
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    padding: 12px;
+  }
+
+  .header h1 {
+    font-size: 18px;
+  }
+
+  .tab-buttons {
+    flex-direction: column;
+  }
+
+  .tab-button {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}
+
+/* Для очень высоких экранов (уменьшаем максимальную высоту контента) */
+@media (min-height: 900px) and (min-width: 768px) {
+  body {
+    align-items: center; /* Вернем центрирование на высоких экранах */
+  }
+
+  .container {
+    max-height: 85vh; /* Ограничиваем высоту контейнера */
+    overflow-y: auto; /* Добавляем прокрутку внутри контейнера если нужно */
+  }
+}
+
+/* Стили для скроллбара */
+::-webkit-scrollbar {
+  width: 10px; /* Толщина скроллбара */
+  height: 10px; /* Для горизонтального скролла */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Цвет трека */
+  border-radius: 5px; /* Закругленные углы */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333; /* Цвет ползунка */
+  border-radius: 5px; /* Закругленные углы */
+  border: 2px solid #f1f1f1; /* Отступ вокруг ползунка */
+  transition: all 0.3s ease; /* Плавный переход */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888; /* Цвет при наведении */
+}
+
+/* Для Firefox и Yandex тоже... */
+* {
+  scrollbar-width: thin; /* Тонкий скроллбар */
+  scrollbar-color: #444 #ffffff; /* Ползунок и трек */
+}

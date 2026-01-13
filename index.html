@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Решение физических задач - Ступников Арсений</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Физические задачи</h1>
+        <p>Интерактивное решение</p>
+      </div>
+
+      <div class="student-info">
+        Проектная работа 2-й триместр<br />
+        Ступников Арсений
+      </div>
+
+      <div class="tab-buttons">
+        <button class="tab-button active" onclick="switchTab('kinematics')">
+          Кинематика
+        </button>
+        <button class="tab-button" onclick="switchTab('dynamics')">
+          Динамика
+        </button>
+        <button class="tab-button" onclick="switchTab('energy')">
+          Энергия
+        </button>
+      </div>
+
+      <!-- КИНЕМАТИКА -->
+      <div id="kinematics" class="tab-content active">
+        <div class="task-title">
+          📍 Задача на кинематику: Равноускоренное движение
+        </div>
+
+        <div class="task-description">
+          <strong>Условие:</strong> Тело начинает движение с начальной скоростью
+          v₀ и движется с постоянным ускорением a. Найти расстояние, пройденное
+          за время t, конечную скорость и среднюю скорость.
+        </div>
+
+        <div class="input-group">
+          <div class="input-field">
+            <label for="v0">Начальная скорость v₀ (м/с)</label>
+            <input type="number" id="v0" value="0" step="0.1" />
+          </div>
+          <div class="input-field">
+            <label for="a">Ускорение a (м/с²)</label>
+            <input type="number" id="a" value="2" step="0.1" />
+          </div>
+          <div class="input-field">
+            <label for="t">Время t (сек)</label>
+            <input type="number" id="t" value="5" step="0.1" />
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button class="btn-calculate" onclick="solveKinematics()">
+            Решить
+          </button>
+          <button class="btn-clear" onclick="clearKinematics()">
+            Очистить
+          </button>
+        </div>
+
+        <div id="kinematicsResults" class="results">
+          <div class="result-item">
+            <div class="result-label">Расстояние (s)</div>
+            <div class="result-value" id="resultS">-</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Конечная скорость (v)</div>
+            <div class="result-value" id="resultV">-</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Средняя скорость (v_avg)</div>
+            <div class="result-value" id="resultVavg">-</div>
+          </div>
+
+          <div class="formula-section">
+            <div class="formula-title">Используемые формулы</div>
+            <div class="formula">
+              s = v₀·t + (a·t²)/2<br />
+              v = v₀ + a·t<br />
+              v_avg = (v₀ + v)/2
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ДИНАМИКА -->
+      <div id="dynamics" class="tab-content">
+        <div class="task-title">
+          ⚙️ Задача на динамику: Второй закон Ньютона
+        </div>
+
+        <div class="task-description">
+          <strong>Условие:</strong> На тело массой m действует сила F. Найти
+          ускорение, вес тела и равнодействующую силу при известной силе трения.
+        </div>
+
+        <div class="input-group">
+          <div class="input-field">
+            <label for="m">Масса m (кг)</label>
+            <input type="number" id="m" value="10" step="0.1" />
+          </div>
+          <div class="input-field">
+            <label for="f">Сила F (Н)</label>
+            <input type="number" id="f" value="50" step="0.1" />
+          </div>
+          <div class="input-field">
+            <label for="friction">Сила трения (Н)</label>
+            <input type="number" id="friction" value="10" step="0.1" />
+          </div>
+          <div class="input-field">
+            <label for="g">Ускорение g (м/с²)</label>
+            <input type="number" id="g" value="9.8" step="0.1" />
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button class="btn-calculate" onclick="solveDynamics()">
+            Решить
+          </button>
+          <button class="btn-clear" onclick="clearDynamics()">Очистить</button>
+        </div>
+
+        <div id="dynamicsResults" class="results">
+          <div class="result-item">
+            <div class="result-label">Вес тела (P)</div>
+            <div class="result-value" id="resultP">-</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Равнодействующая сила (F_net)</div>
+            <div class="result-value" id="resultFnet">-</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Ускорение (a)</div>
+            <div class="result-value" id="resultA">-</div>
+          </div>
+
+          <div class="formula-section">
+            <div class="formula-title">Используемые формулы</div>
+            <div class="formula">
+              P = m·g<br />
+              F_net = F - f_трения<br />
+              a = F_net / m
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ЭНЕРГИЯ -->
+      <div id="energy" class="tab-content">
+        <div class="task-title">
+          ⚡ Задача на энергию: Кинетическая и потенциальная энергия
+        </div>
+
+        <div class="task-description">
+          <strong>Условие:</strong> Тело массой m находится на высоте h и
+          движется со скоростью v. Найти кинетическую энергию, потенциальную
+          энергию и полную механическую энергию.
+        </div>
+
+        <div class="input-group">
+          <div class="input-field">
+            <label for="m2">Масса m (кг)</label>
+            <input type="number" id="m2" value="5" step="0.1" />
+          </div>
+          <div class="input-field">
+            <label for="v2">Скорость v (м/с)</label>
+            <input type="number" id="v2" value="10" step="0.1" />
+          </div>
+          <div class="input-field">
+            <label for="h">Высота h (м)</label>
+            <input type="number" id="h" value="20" step="0.1" />
+          </div>
+          <div class="input-field">
+            <label for="g2">Ускорение g (м/с²)</label>
+            <input type="number" id="g2" value="9.8" step="0.1" />
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button class="btn-calculate" onclick="solveEnergy()">Решить</button>
+          <button class="btn-clear" onclick="clearEnergy()">Очистить</button>
+        </div>
+
+        <div id="energyResults" class="results">
+          <div class="result-item">
+            <div class="result-label">Кинетическая энергия (E_k)</div>
+            <div class="result-value" id="resultEk">-</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Потенциальная энергия (E_p)</div>
+            <div class="result-value" id="resultEp">-</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Полная энергия (E_total)</div>
+            <div class="result-value" id="resultEtotal">-</div>
+          </div>
+
+          <div class="formula-section">
+            <div class="formula-title">Используемые формулы</div>
+            <div class="formula">
+              E_k = (m·v²)/2<br />
+              E_p = m·g·h<br />
+              E_total = E_k + E_p
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ИСТОЧНИКИ -->
+      <div class="sources">
+        <div class="sources-title">Источники информации</div>
+        <div class="source-item">
+          <a href="https://www.fizika.ru/" target="_blank"
+            >Fizika.ru - Электронный учебник физики</a
+          >
+        </div>
+        <div class="source-item">
+          <a href="https://ege.sdamgia.ru/" target="_blank"
+            >РЕШУ ЕГЭ - Задачи по физике</a
+          >
+        </div>
+        <div class="source-item">
+          <a
+            href="https://www.youtube.com/results?search_query=физика"
+            target="_blank"
+            >YouTube - Каналы связанные с физикой</a
+          >
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>Автор: Ступников Арсений</p>
+        <p>
+          Сайт создателя:
+          <a href="https://senyer7.ru" target="_blank">senyer7.ru</a>
+        </p>
+        <p style="margin-top: 10px; font-size: 11px; color: #999">
+          Проектная работа 2-й триместр 8-го класса
+        </p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
